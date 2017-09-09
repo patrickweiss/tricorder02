@@ -1,0 +1,122 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="betrag-eingabe">
+<template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+
+   <table>
+    <tbody>
+      <tr>
+        <td  height="70px"><h1><div id="Betrag">[[betrag]] €</div></h1>
+       
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+ <table>
+    <tbody>
+      <tr>
+        <td on-tap="add1" id="eins" height="70px"><h1>1</h1></div></td>
+        <td on-tap="add2" height="70px"><h1>2</h1></div></td>
+        <td on-tap="add3" height="70px"><h1>3</h1></div></td>
+      </tr>
+     <tr>
+        <td on-tap="add4" height="70px"><h1>4</h1></div></td>
+        <td on-tap="add5" height="70px"><h1>5</h1></div></td>
+        <td on-tap="add6" height="70px"><h1>6</h1></div></td>
+      </tr>
+     <tr>
+        <td on-tap="add7" height="70px"><h1>7</h1></div></td>
+        <td on-tap="add8" height="70px"><h1>8</h1></div></td>
+        <td on-tap="add9" height="70px"><h1>9</h1></div></td>
+      </tr>
+     <tr>
+        <td on-tap="add0" height="70px"><h1>0</h1></div></td>
+        <td on-tap="addComma" height="70px"><h1>,</h1></div></td>
+        <td on-tap="deleteNumber" height="70px"><h1><</h1></div></td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+   
+  <table>
+    <tbody>
+      <tr>
+        <td on-tap="speichern" height="70px"><h1>speichern</h1></td>
+      </tr>
+   </tbody>
+  </table>
+   
+  </template>
+
+  <script>
+    class BetragEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'betrag-eingabe' }
+      static get properties() {
+        return {
+
+          betrag: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
+          }
+        }
+      }
+
+      constructor() {
+        super();
+        this.betrag = "";
+      }
+
+      add1() {
+        this.betrag += "1";
+      }
+      add2() {
+        this.betrag += "2";
+      }
+      add3() {
+        this.betrag += "3";
+      }
+      add4() {
+        this.betrag += "4";
+      }
+      add5() {
+        this.betrag += "5";
+      }
+      add6() {
+        this.betrag += "6";
+      }
+      add7() {
+        this.betrag += "7";
+      }
+      add8() {
+        this.betrag += "8";
+      }
+      add9() {
+        this.betrag += "9";
+      }
+      add0() {
+        this.betrag += "0";
+      }
+      addComma() {
+        this.betrag += ",";
+      }
+      deleteNumber() {
+        this.betrag = this.betrag.slice(0, -1);
+        //  document.getElementById("Betrag").innerHTML = betrag + " €";
+      }
+
+
+      speichern(e) {
+        this.dispatchEvent(new CustomEvent('speichern'));
+      }
+    }
+
+
+    customElements.define(BetragEingabe.is, BetragEingabe);
+  </script>
+</dom-module>

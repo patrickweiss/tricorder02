@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../officeComponents/betrag-eingabe.html">
+
+<dom-module id="oo-ausgaben-erfassen-betrag">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+
+  <table>
+    <tbody>
+      <tr>
+        <td id="officeTreePosition" height="70px"><a href="/start">Start</a> >> Ausgabe erfassen >>
+          <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <betrag-eingabe></betrag-eingabe>
+
+  </template>
+
+  <script>
+    class OoAusgabenErfassenBetrag extends Polymer.Element {
+      static get is() { return 'oo-ausgaben-erfassen-betrag'; }
+   
+    ready() {
+        
+        super.ready();
+        this.$.buchungsperiode.innerHTML = loadState()["Buchungsperiode"];
+      }
+      
+      buchungsperiodeLoeschen(){
+        console.log("Buchungsperiode löschen wurde aufgerufen");
+        var state = loadState();
+        state["Buchungsperiode"]=null;
+        storeState(state);
+        window.location.href="ausgabenErfassenBuchungsperiode";
+      }
+   
+    }
+
+    window.customElements.define(OoAusgabenErfassenBetrag.is, OoAusgabenErfassenBetrag);
+  </script>
+</dom-module>

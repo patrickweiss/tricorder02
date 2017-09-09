@@ -1,0 +1,102 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="buchungsperiode-eingabe">
+  <template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+
+  <table>
+    <tbody>
+      
+      <tr>
+        <td colspan=2>
+          <h1>Buchungsperiode</h1>
+          <h3>Wählen Sie den Monat, für den Sie neue Ausgaben erfassen möchten
+            <h3>
+
+      </tr>
+
+      <tr>
+        <td on-tap="januar"><h3>Januar</h3></td> <td on-tap="februar"><h3>Februar</h3></td>
+      </tr>
+      <tr>
+        <td on-tap="maerz"><h3>März</h3></td> <td on-tap="april"><h3>April</h3></td>
+      </tr>
+      <tr>
+        <td on-tap="mai"><h3>Mai</h3></td> <td on-tap="juni"><h3>Juni</h3></td>
+      </tr>
+      <tr>
+        <td on-tap="juli"><h3>Juli</h3></td> <td on-tap="august"><h3>August</h3></td>
+      </tr>
+      <tr>
+        <td on-tap="september"><h3>September</h3></td> <td on-tap="oktober"><h3>Oktober</h3></td>
+      </tr>
+      <tr>
+        <td on-tap="november"><h3>November</h3></td> <td on-tap="dezember"><h3>Dezember</h3></td>
+      </tr>
+    </tbody>
+  </table>
+
+  </template>
+
+  <script>
+    class BuchungsperiodeEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'buchungsperiode-eingabe' }
+      static get properties() {
+        return {
+
+          monat: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
+          }
+        }
+      }
+
+      constructor() {
+        super();
+        this.monat = "";
+      }
+
+      januar() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Januar"},bubbles: true, composed: true}));
+      }
+      februar() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Februar"},bubbles: true, composed: true}));
+      }
+      maerz() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "März"},bubbles: true, composed: true}));
+      }
+      april() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "April"},bubbles: true, composed: true}));
+      }
+      mai() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Mai"},bubbles: true, composed: true}));
+      }
+      juni() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Juni"},bubbles: true, composed: true}));
+      }
+      juli() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Juli"},bubbles: true, composed: true}));
+      }
+      august() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "August"},bubbles: true, composed: true}));
+      }
+      september() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "September"},bubbles: true, composed: true}));
+      }
+      oktober() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Oktober"},bubbles: true, composed: true}));
+      }
+      november() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "November"},bubbles: true, composed: true}));
+      }
+      dezember() {
+        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Dezemeber"},bubbles: true, composed: true}));
+      }
+    }
+
+
+    customElements.define(BuchungsperiodeEingabe.is, BuchungsperiodeEingabe);
+  </script>
+</dom-module>
