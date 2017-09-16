@@ -17,7 +17,7 @@
     </tbody>
   </table>
 
-  <betrag-eingabe></betrag-eingabe>
+  <betrag-eingabe id="betragEingabe"></betrag-eingabe>
 
   </template>
 
@@ -29,6 +29,9 @@
         
         super.ready();
         this.$.buchungsperiode.innerHTML = loadState()["Buchungsperiode"];
+        try{
+        this.$.betragEingabe.betrag=loadState()["Ausgaben"]["neueAusgabe"]["Betrag"];
+        }catch(e){}
       }
       
       buchungsperiodeLoeschen(){
