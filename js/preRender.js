@@ -10,10 +10,7 @@
       //Initialzustand herstellen
       triState["Gewinn"] = "Yipi- Gewinn";
       triState["Ausgaben"] = {};
-      triState["Konten"] = {
-        Porto: { ID: "Porto", Konto: "GUV", MwSt: "7%" },
-        Benzin: { ID: "Benzin", Konto: "GUV", MwSt: "19&" }
-      }
+   
        triStateJSON = JSON.stringify(triState);
     localStorage.setItem("triStateJSON", triStateJSON);
     }else   triState = JSON.parse(triStateJSON);
@@ -29,3 +26,14 @@
     localStorage.setItem("triStateJSON", triStateJSON);
   }
   
+  
+  class OOBusinessObjects{
+    static getByOfficeOneIDSpreadsheetNameSheetName(folderId,spreadsheetName,sheetName){
+      var kontenArray = [
+        { ID: "Porto", Konto: "GUV", MwSt: "7%" },
+        { ID: "Benzin", Konto: "GUV", MwSt: "19%" }
+        { ID: "Hotel", Konto: "GUV", MwSt: "19%" }
+      ]
+      return kontenArray;
+    }
+  }

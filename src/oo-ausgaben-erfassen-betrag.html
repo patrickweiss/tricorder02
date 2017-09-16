@@ -38,6 +38,20 @@
         storeState(state);
         window.location.href="ausgabenErfassenBuchungsperiode";
       }
+      
+      connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('speichern', this.speichern);
+      }
+
+      speichern(e) {
+        console.log("Betrag speichern wurde ausgeführt");
+        console.log(e.detail.betrag);
+        var state = loadState();
+        state["Ausgaben"]["neueAusgabe"]={Betrag:e.detail.betrag};
+        storeState(state);
+        window.location.href="ausgabenErfassenKonto";
+      }
    
     }
 

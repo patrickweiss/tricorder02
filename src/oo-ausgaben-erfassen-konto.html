@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../officeComponents/konto-eingabe.html">
+
+<dom-module id="oo-ausgaben-erfassen-konto">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+
+  <table>
+    <tbody>
+      <tr>
+            <td id="officeTreePosition" height="70px"><a href="/start">Start</a> >> Ausgabe erfassen >>
+          <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+  <konto-eingabe id="konto"></konto-eingabe>
+
+  </template>
+
+  <script>
+    class OoAusgabenErfassenKonto extends Polymer.Element {
+      static get is() { return 'oo-ausgaben-erfassen-konto'; }
+
+      ready() {
+        
+        super.ready();
+        this.$.buchungsperiode.innerHTML = loadState()["Buchungsperiode"];
+        
+      }
+      
+      connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('kontospeichern', this.speichern);
+      }
+
+      speichern(e) {
+        console.log("Konto speichern wurde ausgeführt");
+      
+        var state = loadState();
+        //state["Buchungsperiode"]=e.detail.month;
+        storeState(state);
+        //window.location.href="ausgabenErfassenBeleg";
+      }
+    }
+
+    window.customElements.define(OoAusgabenErfassenKonto.is, OoAusgabenErfassenKonto);
+  </script>
+</dom-module>
