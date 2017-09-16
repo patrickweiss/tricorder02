@@ -33,9 +33,17 @@
         
       }
       
+      buchungsperiodeLoeschen(){
+        console.log("Buchungsperiode löschen wurde aufgerufen");
+        var state = loadState();
+        state["Buchungsperiode"]=null;
+        storeState(state);
+        window.location.href="ausgabenErfassenBuchungsperiode";
+      }
+      
       connectedCallback() {
         super.connectedCallback();
-        window.addEventListener('kontospeichern', this.speichern);
+        window.addEventListener('kontoSpeichern', this.speichern);
       }
 
       speichern(e) {

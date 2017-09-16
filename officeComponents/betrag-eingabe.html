@@ -112,7 +112,7 @@
 
 
       speichern(e) {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {betrag: this.betrag},bubbles: true, composed: true}));
+        this.dispatchEvent(new CustomEvent('betragSpeichern',{detail: {betrag: this.betrag},bubbles: true, composed: true}));
       }
     }
 

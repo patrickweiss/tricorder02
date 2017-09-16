@@ -60,10 +60,10 @@
       }
 
       januar() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Januar"},bubbles: true, composed: true}));
+        this.dispatchEvent(new CustomEvent('kontoSpeichern',{detail: {month: "Januar"},bubbles: true, composed: true}));
       }
       februar() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Februar"},bubbles: true, composed: true}));
+        this.dispatchEvent(new CustomEvent('kontoSpeichern',{detail: {month: "Februar"},bubbles: true, composed: true}));
       }
       maerz() {
         this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "März"},bubbles: true, composed: true}));

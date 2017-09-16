@@ -31,7 +31,7 @@
     static getByOfficeOneIDSpreadsheetNameSheetName(folderId,spreadsheetName,sheetName){
       var kontenArray = [
         { ID: "Porto", Konto: "GUV", MwSt: "7%" },
-        { ID: "Benzin", Konto: "GUV", MwSt: "19%" }
+        { ID: "Benzin", Konto: "GUV", MwSt: "19%" },
         { ID: "Hotel", Konto: "GUV", MwSt: "19%" }
       ]
       return kontenArray;
