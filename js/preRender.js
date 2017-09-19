@@ -3,7 +3,7 @@
 
   function loadState() {
     var triStateJSON = localStorage.getItem("triStateJSON");
-    console.log("String aus localStorage:"+triStateJSON);
+  //  console.log("String aus localStorage:"+triStateJSON);
     var triState = {};
 
     if (triStateJSON == null) {
@@ -15,14 +15,14 @@
     localStorage.setItem("triStateJSON", triStateJSON);
     }else   triState = JSON.parse(triStateJSON);
 
-    console.log("triState Objekt:"+JSON.stringify(triState));
+  //  console.log("triState Objekt:"+JSON.stringify(triState));
        return triState;
   }
 
 
   function storeState(state) {
     triStateJSON = JSON.stringify(state);
-    console.log("State in localStorage speichern:"+triStateJSON);
+  //  console.log("State in localStorage speichern:"+triStateJSON);
     localStorage.setItem("triStateJSON", triStateJSON);
   }
   

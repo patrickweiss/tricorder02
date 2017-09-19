@@ -10,11 +10,16 @@
         <tr>
           <td height="70px">
             <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
+              
               <div name="start">Die einfachste, schnellste und günstigste Umsatzsteuervoranmeldung (UStVA) und Gewinnermittlung (EÜR) für die Steuererklärung</div>
+              
               <div name="navigator">
                 <a href="/start">Start</a> >> Ausgabe erfassen >>
-                <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
+                <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a> >>
+                <a href="ausgabenErfassenBetrag" on-click="betragAendern" id="betrag"></a>
+                
               </div>
+              
             </iron-pages>
           </td>
         </tr>
@@ -43,11 +48,16 @@
       }
       
       _pageChanged(page) {
-       
-       
-          this.$.buchungsperiode.innerHTML=loadState()["Buchungsperiode"];
+         var state = loadState();
+         
+            this.$.buchungsperiode.innerHTML=state["Buchungsperiode"];
+               try{
+          this.$.betrag.innerHTML=state["Ausgaben"]["neueAusgabe"]["Betrag"]+" €";
+          }catch(e){}
+           
           
-      }
+            
+        }
       buchungsperiodeLoeschen(){
         console.log("Buchungsperiode löschen wurde aufgerufen");
         var state = loadState();
@@ -55,7 +65,11 @@
         storeState(state);
         document.getElementById("dieApp").page="ausgabenErfassenBuchungsperiode";   
       }
-   
+      
+      betragAendern(){
+          document.getElementById("dieApp").page="ausgabenErfassenBetrag";   
+ 
+      }
     }
 
 
