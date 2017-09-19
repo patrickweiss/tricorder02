@@ -20,8 +20,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
+<!--
+</a><link rel="import" href="my-icons.html">
+-->
 
+<link rel="import" href="oo-navigator.html">
 
 <link rel="import" href="oo-start.html">
 <link rel="import" href="oo-ausgaben-erfassen-buchungsperiode.html">
@@ -32,8 +35,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="officeone-app">
   <template>
    
-<h3>Eingebene Daten:[[dateneingabe]]</h3>
-<h3>Seite:[[page]]</h3>
+<p>officeone-app:[[dateneingabe.konto]]</p>
+
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
@@ -42,6 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}"></app-route>
 
       
+  <oo-navigator page={{page}}> </oo-navigator>
   
         <iron-pages
             selected="[[page]]"
@@ -49,7 +53,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
 
-          <oo-start id="start" name="start"></oo-start>
+          <oo-start id="start" name="start" dateneingabe=[[dateneingabe]]></oo-start>
           <oo-ausgaben-erfassen-buchungsperiode id="buchungsperiode" name="ausgabenErfassenBuchungsperiode"></oo-ausgaben-erfassen-buchungsperiode>
           <oo-ausgaben-erfassen-betrag id="betrag" name="ausgabenErfassenBetrag"></oo-ausgaben-erfassen-betrag>
           <oo-ausgaben-erfassen-konto id="konto" name="ausgabenErfassenKonto"></oo-ausgaben-erfassen-konto> 

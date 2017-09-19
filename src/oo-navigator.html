@@ -1,0 +1,64 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="oo-navigator">
+  <template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+
+  <table>
+    <tbody>
+        <tr>
+          <td height="70px">
+            <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
+              <div name="start">Die einfachste, schnellste und günstigste Umsatzsteuervoranmeldung (UStVA) und Gewinnermittlung (EÜR) für die Steuererklärung</div>
+              <div name="navigator">
+                <a href="/start">Start</a> >> Ausgabe erfassen >>
+                <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
+              </div>
+            </iron-pages>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+       
+
+  </template>
+
+  <script>
+    class OoNavigator extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-navigator' }
+      static get properties() {
+        return {
+            page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          }
+        }
+      }
+
+      constructor() {
+        super();
+       
+      }
+      
+      _pageChanged(page) {
+       
+       
+          this.$.buchungsperiode.innerHTML=loadState()["Buchungsperiode"];
+          
+      }
+      buchungsperiodeLoeschen(){
+        console.log("Buchungsperiode löschen wurde aufgerufen");
+        var state = loadState();
+        state["Buchungsperiode"]=null;
+        storeState(state);
+        document.getElementById("dieApp").page="ausgabenErfassenBuchungsperiode";   
+      }
+   
+    }
+
+
+    customElements.define(OoNavigator.is, OoNavigator);
+  </script>
+</dom-module>

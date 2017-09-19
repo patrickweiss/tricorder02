@@ -6,16 +6,7 @@
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-  <table>
-    <tbody>
-      <tr>
-        <td id="officeTreePosition" height="70px"><a href="/start">Start</a> >> Ausgabe erfassen >>
-          <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+ 
 
   <betrag-eingabe id="betragEingabe"></betrag-eingabe>
 
@@ -28,20 +19,13 @@
     ready() {
         
         super.ready();
-        this.$.buchungsperiode.innerHTML = loadState()["Buchungsperiode"];
-        try{
+       try{
         this.$.betragEingabe.betrag=loadState()["Ausgaben"]["neueAusgabe"]["Betrag"];
         }catch(e){}
         console.log("ausgabenErfassenBetrag:ready wurde ausgeführt");
       }
       
-      buchungsperiodeLoeschen(){
-        console.log("Buchungsperiode löschen wurde aufgerufen");
-        var state = loadState();
-        state["Buchungsperiode"]=null;
-        storeState(state);
-        window.location.href="ausgabenErfassenBuchungsperiode";
-      }
+  
       
       connectedCallback() {
         super.connectedCallback();

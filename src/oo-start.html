@@ -5,20 +5,14 @@
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-   <table>
-    <tbody>
-      <tr>
-        <td id="officeTreePosition" height="70px">Die einfachste, schnellste und günstigste Umsatzsteuervoranmeldung (UStVA) und Gewinnermittlung (EÜR) für die Steuererklärung</td>
-      </tr>
-    </tbody>
-  </table>
+   <p>officeone-app:[[dateneingabe.mwst]]</p>
 
   <table>
     <tbody>
 
       <tr>
         <td colspan=2>
-          <h1 id="gewinn">Gewinn</h1>
+          <h1>Gewinn</h1>
           <h3> = Einnahmen - Ausgaben
             <h3>
               <h1>UStVA</h1>
@@ -45,12 +39,17 @@
 
   <script>
     class OoStart extends Polymer.Element {
-      static get is() { return 'oo-start'; }
-      ready() {
-        
-        super.ready();
-        this.$.gewinn.innerHTML = loadState()["Gewinn"];
+      static get properties() {
+        return {
+           dateneingabe: {
+            type: String,
+            reflectToAttribute: true,
+          }
+        }
       }
+      
+      static get is() { return 'oo-start'; }
+     
     }
 
 
