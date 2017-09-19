@@ -38,7 +38,7 @@
         var state = loadState();
         state["Buchungsperiode"]=null;
         storeState(state);
-        window.location.href="ausgabenErfassenBuchungsperiode";
+           document.getElementById("dieApp").page="ausgabenErfassenBuchungsperiode";   
       }
       
       connectedCallback() {

@@ -35,7 +35,7 @@
         var state = loadState();
         state["Buchungsperiode"]=e.detail.month;
         storeState(state);
-        window.location.href="ausgabenErfassenBetrag";
+        document.getElementById("dieApp").page="ausgabenErfassenBetrag";
       }
     }
 

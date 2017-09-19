@@ -32,6 +32,7 @@
         try{
         this.$.betragEingabe.betrag=loadState()["Ausgaben"]["neueAusgabe"]["Betrag"];
         }catch(e){}
+        console.log("ausgabenErfassenBetrag:ready wurde ausgeführt");
       }
       
       buchungsperiodeLoeschen(){
@@ -53,7 +54,7 @@
         var state = loadState();
         state["Ausgaben"]["neueAusgabe"]={Betrag:e.detail.betrag};
         storeState(state);
-        window.location.href="ausgabenErfassenKonto";
+        document.getElementById("dieApp").page="ausgabenErfassenKonto";   
       }
    
     }
