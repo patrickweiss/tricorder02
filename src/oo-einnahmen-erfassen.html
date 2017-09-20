@@ -1,5 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 
@@ -9,6 +13,17 @@
 
 <dom-module id="oo-einnahmen-erfassen">
   <template>
+    
+   <p>oo-einnahmen.path:[[path]]</p> 
+   <p>oo-einnahmen.page:[[page]]</p> 
+   
+      <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPath]]einnahmenErfassen/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+    
     <link rel="stylesheet" type="text/css" href="css/officeone.css">
   
       <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
@@ -24,17 +39,36 @@
 <script>
     class OoEinnahmenErfassen extends Polymer.Element {
       static get is() { return 'oo-einnahmen-erfassen'; }
-      static get properties() {
+     static get properties() {
         return {
           page: {
             type: String,
             reflectToAttribute: true,
-            notify: true
-          }
-        }
+            observer: '_pageChanged',
+          },
+          dateneingabe: {
+            type: Object,
+            reflectToAttribute: true,
+          },
+          routeData: Object,
+          subroute: String,
+          // This shouldn't be neccessary, but the Analyzer isn't picking up
+          // Polymer.Element#rootPath
+          rootPath: String,
+        };
       }
 
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
 
+      _routePageChanged(page) {
+        this.page = page
+        console.log("oo-einnahmen-erfassen._routePageChanged: " + this.page);
+      }
+      
 
     }
 

@@ -30,8 +30,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="officeone-app">
   <template>
-<p>officeone-app.page:[[page]]</p>
-    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+<p>officeone-app.path:[[path]]</p>
+
+    <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
         pattern="[[rootPath]]:page"
