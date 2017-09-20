@@ -4,7 +4,7 @@
 <dom-module id="oo-navigator">
   <template>
    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
-
+<p>oo-navigator.page:[[page]]</p>
   <table>
     <tbody>
         <tr>
@@ -34,10 +34,11 @@
       static get is() { return 'oo-navigator' }
       static get properties() {
         return {
-            page: {
+          page: {
             type: String,
             reflectToAttribute: true,
             observer: '_pageChanged',
+            notify:true
           }
         }
       }
@@ -67,8 +68,8 @@
       }
       
       betragAendern(){
-          document.getElementById("dieApp").page="ausgabenErfassenBetrag";   
- 
+       // document.getElementById("dieApp").page="ausgabenErfassenBetrag";   
+       this.page="ausgabenErfassenBetrag";   
       }
     }
 

@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="oo-start.html">
+<link rel="import" href="oo-einnahmen-erfassen.html">
+<link rel="import" href="oo-ausgaben-erfassen-buchungsperiode.html">
+<link rel="import" href="oo-ausgaben-erfassen-betrag.html">
+<link rel="import" href="oo-ausgaben-erfassen-konto.html">
+<link rel="import" href="my-view404.html">
+
+<dom-module id="oo-content">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+        <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main">
+
+          <oo-start name="start"></oo-start> 
+        
+          <oo-einnahmen-erfassen name="einnahmenErfassen" page="buchungsperiode"></oo-einnahmen-erfassen> 
+          <oo-ausgaben-erfassen-buchungsperiode id="buchungsperiode" name="ausgabenErfassenBuchungsperiode"></oo-ausgaben-erfassen-buchungsperiode>
+          <oo-ausgaben-erfassen-betrag id="betrag" name="ausgabenErfassenBetrag"></oo-ausgaben-erfassen-betrag>
+          <oo-ausgaben-erfassen-konto id="konto" name="ausgabenErfassenKonto"></oo-ausgaben-erfassen-konto> 
+
+          <my-view404 name="view404"></my-view404>
+        </iron-pages>
+   
+  </template>
+
+  <script>
+    class OoContent extends Polymer.Element {
+      static get properties() {
+        return {
+         page: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          }
+        }
+      }
+      
+      static get is() { return 'oo-content'; }
+     
+    }
+
+
+    window.customElements.define(OoContent.is, OoContent);
+  </script>
+</dom-module>
