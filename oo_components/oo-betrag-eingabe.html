@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 
-<dom-module id="betrag-eingabe">
+<dom-module id="oo-betrag-eingabe">
 <template>
    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
 <!--
@@ -54,8 +54,8 @@
   </template>
 
   <script>
-    class BetragEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'betrag-eingabe' }
+    class OoBetragEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-betrag-eingabe' }
       static get properties() {
         return {
           betrag: {
@@ -123,6 +123,6 @@
     }
 
 
-    customElements.define(BetragEingabe.is, BetragEingabe);
+    customElements.define(OoBetragEingabe.is, OoBetragEingabe);
   </script>
 </dom-module>

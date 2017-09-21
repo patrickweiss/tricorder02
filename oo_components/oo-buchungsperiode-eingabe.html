@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 
-<dom-module id="buchungsperiode-eingabe">
+<dom-module id="oo-buchungsperiode-eingabe">
   <template>
    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
 
@@ -46,8 +46,8 @@
   </template>
 
   <script>
-    class BuchungsperiodeEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'buchungsperiode-eingabe' }
+    class OoBuchungsperiodeEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-buchungsperiode-eingabe' }
       static get properties() {
         return {
           monat: {
@@ -76,6 +76,6 @@
     }
 
 
-    customElements.define(BuchungsperiodeEingabe.is, BuchungsperiodeEingabe);
+    customElements.define(OoBuchungsperiodeEingabe.is, OoBuchungsperiodeEingabe);
   </script>
 </dom-module>
