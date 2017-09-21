@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="oo-navigator.html">
 <link rel="import" href="oo-content.html">
-
+<link rel="import" href="../officeComponents/betrag-eingabe.html">
 
 <dom-module id="officeone-app">
   <template>
@@ -40,9 +40,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}"></app-route>
 
       
-  <oo-navigator page={{page}}> </oo-navigator>
+  <oo-navigator page={{page}}> 
   
-  <oo-content page={{page}}></oo-start>
+  </oo-navigator>
+  
+  <oo-content page={{page}}></oo-content>
  
   </template>
 

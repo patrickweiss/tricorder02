@@ -1,8 +1,8 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="shared-styles.html">
-<link rel="import" href="../officeComponents/buchungsperiode-eingabe.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/shared-styles.html">
+<link rel="import" href="/officeComponents/buchungsperiode-eingabe.html">
 
-<dom-module id="oo-ausgaben-erfassen-buchungsperiode">
+<dom-module id="oo-ausgabe-erfassen-buchungsperiode">
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
@@ -12,8 +12,8 @@
   </template>
 
   <script>
-    class OoAusgabenErfassenBuchungsperiode extends Polymer.Element {
-      static get is() { return 'oo-ausgaben-erfassen-buchungsperiode'; }
+    class OoAusgabeErfasseBuchungsperiode extends Polymer.Element {
+      static get is() { return 'oo-ausgabe-erfassen-buchungsperiode'; }
 
      
       connectedCallback() {
@@ -27,12 +27,12 @@
         var state = loadState();
         state["Buchungsperiode"]=e.detail.month;
         storeState(state);
-        document.getElementById("dieApp").page="ausgabenErfassenBetrag";
+        document.getElementById("dieApp").page="ausgabeErfassenBetrag";
       }
       
    
     }
 
-    window.customElements.define(OoAusgabenErfassenBuchungsperiode.is, OoAusgabenErfassenBuchungsperiode);
+    window.customElements.define(OoAusgabeErfassenBuchungsperiode.is, OoAusgabeErfassenBuchungsperiode);
   </script>
 </dom-module>

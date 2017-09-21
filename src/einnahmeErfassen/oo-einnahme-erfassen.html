@@ -1,26 +1,22 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
 
 
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selector.html">
 
 <link rel="import" href="oo-einnahmen-erfassen-buchungsperiode.html">
-<link rel="import" href="my-view404.html">
+<link rel="import" href="/src/my-view404.html">
 
 
-<dom-module id="oo-einnahmen-erfassen">
+<dom-module id="oo-einnahme-erfassen">
   <template>
-    
-   <p>oo-einnahmen.path:[[path]]</p> 
-   <p>oo-einnahmen.page:[[page]]</p> 
-   
-      <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
+       <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
-        pattern="[[rootPath]]einnahmenErfassen/:page"
+        pattern="[[rootPath]]einnahmeErfassen/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
     
@@ -37,8 +33,8 @@
   </template>
 
 <script>
-    class OoEinnahmenErfassen extends Polymer.Element {
-      static get is() { return 'oo-einnahmen-erfassen'; }
+    class OoEinnahmeErfassen extends Polymer.Element {
+      static get is() { return 'oo-einnahme-erfassen'; }
      static get properties() {
         return {
           page: {
@@ -66,13 +62,13 @@
 
       _routePageChanged(page) {
         this.page = page
-        console.log("oo-einnahmen-erfassen._routePageChanged: " + this.page);
+        console.log("oo-einnahme-erfassen._routePageChanged: " + this.page);
       }
       
 
     }
 
 
-    window.customElements.define(OoEinnahmenErfassen.is, OoEinnahmenErfassen);
+    window.customElements.define(OoEinnahmeErfassen.is, OoEinnahmeErfassen);
   </script>
 </dom-module>

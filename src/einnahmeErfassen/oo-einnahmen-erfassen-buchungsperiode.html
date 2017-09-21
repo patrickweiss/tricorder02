@@ -1,12 +1,11 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="shared-styles.html">
-<link rel="import" href="../officeComponents/buchungsperiode-eingabe.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/shared-styles.html">
+<link rel="import" href="/officeComponents/buchungsperiode-eingabe.html">
 
 <dom-module id="oo-einnahmen-erfassen-buchungsperiode">
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-<p>Einnahmen</p> 
   <buchungsperiode-eingabe id="buchungsperiode"></buchungsperiode-eingabe>
 
   </template>
@@ -26,7 +25,7 @@
         var state = loadState();
         state["Buchungsperiode"]=e.detail.month;
         storeState(state);
-        document.getElementById("dieApp").page="ausgabenErfassenBetrag";
+        document.getElementById("dieApp").page="einnahmenErfassenBetrag";
       }
     }
 

@@ -11,13 +11,10 @@
           <td height="70px">
             <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
               
-              <div name="start">Die einfachste, schnellste und günstigste Umsatzsteuervoranmeldung (UStVA) und Gewinnermittlung (EÜR) für die Steuererklärung</div>
+              <div name="start">Die einfachste, schnellste und günstigste Gewinnermittlung (EÜR) und Umsatzsteuervoranmeldung (UStVA) für die Steuererklärung</div>
               
               <div name="navigator">
-                <a href="/start">Start</a> >> Ausgabe erfassen >>
-                <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a> >>
-                <a href="ausgabenErfassenBetrag" on-click="betragAendern" id="betrag"></a>
-                
+                <a href="/start" id="start">Start</a> >> [[seitenname]]
               </div>
               
             </iron-pages>
@@ -45,20 +42,20 @@
 
       constructor() {
         super();
-       
+        this.seitennamen={ausgabenErfassen:"Ausgabe erfassen",einnahmenErfassen:"Einnahme erfassen"};
       }
       
       _pageChanged(page) {
          var state = loadState();
-         
+         /*
             this.$.buchungsperiode.innerHTML=state["Buchungsperiode"];
                try{
           this.$.betrag.innerHTML=state["Ausgaben"]["neueAusgabe"]["Betrag"]+" €";
           }catch(e){}
-           
-          
-            
+          */
+         this.seitenname= this.seitennamen[this.page];
         }
+        
       buchungsperiodeLoeschen(){
         console.log("Buchungsperiode löschen wurde aufgerufen");
         var state = loadState();
