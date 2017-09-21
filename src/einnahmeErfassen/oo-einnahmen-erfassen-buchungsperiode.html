@@ -16,9 +16,10 @@
       
       connectedCallback() {
         super.connectedCallback();
-        window.addEventListener('buchungsperiodeSpeichern', this.speichern);
+     //   window.addEventListener('buchungsperiodeSpeichern', this.speichern);
       }
 
+/*
       speichern(e) {
         console.log("Buchungsperiode speichern wurde ausgeführt");
         console.log(e.detail.month);
@@ -27,6 +28,7 @@
         storeState(state);
         document.getElementById("dieApp").page="einnahmenErfassenBetrag";
       }
+      */
     }
 
     window.customElements.define(OoEinnahmenErfassenBuchungsperiode.is, OoEinnahmenErfassenBuchungsperiode);

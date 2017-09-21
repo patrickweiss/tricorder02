@@ -1,10 +1,10 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="shared-styles.html">
-<link rel="import" href="../officeComponents/betrag-eingabe.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/shared-styles.html">
+<link rel="import" href="/officeComponents/betrag-eingabe.html">
 
-<dom-module id="oo-ausgaben-erfassen-betrag">
+<dom-module id="oo-ausgabe-erfassen-betrag">
   <template>
-  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+  <link rel="stylesheet" type="text/css" href="/css/officeone.css">
 
  
 
@@ -13,8 +13,8 @@
   </template>
 
   <script>
-    class OoAusgabenErfassenBetrag extends Polymer.Element {
-      static get is() { return 'oo-ausgaben-erfassen-betrag'; }
+    class OoAusgabeErfassenBetrag extends Polymer.Element {
+      static get is() { return 'oo-ausgabe-erfassen-betrag'; }
    
     ready() {
         
@@ -22,7 +22,7 @@
        try{
         this.$.betragEingabe.betrag=loadState()["Ausgaben"]["neueAusgabe"]["Betrag"];
         }catch(e){}
-        console.log("ausgabenErfassenBetrag:ready wurde ausgeführt");
+        console.log("ausgabeErfassenBetrag:ready wurde ausgeführt");
       }
       
   
@@ -38,11 +38,11 @@
         var state = loadState();
         state["Ausgaben"]["neueAusgabe"]={Betrag:e.detail.betrag};
         storeState(state);
-        document.getElementById("dieApp").page="ausgabenErfassenKonto";   
+        document.getElementById("dieApp").page="ausgabeErfassen/Konto";   
       }
    
     }
 
-    window.customElements.define(OoAusgabenErfassenBetrag.is, OoAusgabenErfassenBetrag);
+    window.customElements.define(OoAusgabeErfassenBetrag.is, OoAusgabeErfassenBetrag);
   </script>
 </dom-module>

@@ -14,7 +14,16 @@
   <script>
     class OoAusgabeErfassenBuchungsperiode extends Polymer.Element {
       static get is() { return 'oo-ausgabe-erfassen-buchungsperiode'; }
-
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+            notify:true
+          }
+        }
+      }
      
       connectedCallback() {
         super.connectedCallback();
@@ -27,7 +36,7 @@
         var state = loadState();
         state["Buchungsperiode"]=e.detail.month;
         storeState(state);
-        document.getElementById("dieApp").page="ausgabeErfassenBetrag";
+        this.page="betrag";
       }
       
    

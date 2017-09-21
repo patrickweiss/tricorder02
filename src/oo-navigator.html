@@ -15,6 +15,7 @@
               
               <div name="navigator">
                 <a href="/start" id="start">Start</a> >> [[seitenname]]
+                <div id="buchungssatz"></div>
               </div>
               
             </iron-pages>
@@ -36,13 +37,17 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
             notify:true
-          }
+          },
+           seitenname: {
+            type: String,
+            reflectToAttribute: true
+           }
         }
       }
 
       constructor() {
         super();
-        this.seitennamen={ausgabenErfassen:"Ausgabe erfassen",einnahmenErfassen:"Einnahme erfassen"};
+        this.seitennamen={ausgabeErfassen:"Ausgabe erfassen",einnahmeErfassen:"Einnahme erfassen"};
       }
       
       _pageChanged(page) {

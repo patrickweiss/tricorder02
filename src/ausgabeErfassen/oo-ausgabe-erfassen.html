@@ -7,7 +7,15 @@
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/iron-selector/iron-selector.html">
 
+<link rel="import" href="/officeComponents/buchungsperiode-eingabe.html">
+<link rel="import" href="/officeComponents/betrag-eingabe.html">
+<link rel="import" href="/officeComponents/konto-eingabe.html">
+<link rel="import" href="/officeComponents/photo-eingabe.html">
+
+<link rel="import" href="oo-ausgabe-satz.html">
+
 <link rel="import" href="oo-ausgabe-erfassen-buchungsperiode.html">
+<link rel="import" href="oo-ausgabe-erfassen-betrag.html">
 <link rel="import" href="/src/my-view404.html">
 
 
@@ -22,10 +30,15 @@
     
     <link rel="stylesheet" type="text/css" href="css/officeone.css">
   
+    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="{{betrag}}" konto="{{konto}}"></oo-ausgabe-satz>
+  
       <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
       
-        <oo-ausgabe-erfassen-buchungsperiode id="buchungsperiode" name="buchungsperiode"></oo-ausgabe-erfassen-buchungsperiode>
-   
+        <buchungsperiode-eingabe name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></buchungsperiode-eingabe>
+        <betrag-eingabe name="betrag" betrag={{betrag}} naechsteseite="ausgabeErfassen/konto"></betrag-eingabe>
+        <konto-eingabe name="konto" konto={{konto}} naechsteseite="ausgabeErfassen/photo"></konto-eingabe>
+        <photo-eingabe name="photo" photo={{photo}} naechsteseite="ausgabeErfassen/upload"></photo-eingabe>
+ 
         <my-view404 name="view404"></my-view404>
       </iron-pages>
   
@@ -40,7 +53,6 @@
           page: {
             type: String,
             reflectToAttribute: true,
-            observer: '_pageChanged',
           },
           dateneingabe: {
             type: Object,
@@ -61,7 +73,7 @@
       }
 
       _routePageChanged(page) {
-        this.page = page
+        this.page = page;
         console.log("oo-ausgabe-erfassen._routePageChanged: " + this.page);
       }
       

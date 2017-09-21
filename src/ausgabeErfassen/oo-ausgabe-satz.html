@@ -1,0 +1,57 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/shared-styles.html">
+
+<dom-module id="oo-ausgabe-satz">
+  <template>
+  <link rel="stylesheet" type="text/css" href="/css/officeone.css">
+
+   <table>
+    <tbody>
+        <tr>
+          <td height="70px">
+            <a href="ausgabeErfassen/buchungsperiode">[[buchungsperiode]]</a> * 
+            <a href="ausgabeErfassen/betrag">[[betrag]]</a> * 
+            <a href="ausgabeErfassen/konto">[[konto]]</a> * 
+            <a href="ausgabeErfassen/photo">[[photo]]</a>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+       
+
+  
+
+  </template>
+
+  <script>
+    class OoAusgabeSatz extends Polymer.Element {
+      static get is() { return 'oo-ausgabe-satz'; }
+      static get properties() {
+        return {
+          buchungsperiode: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          },
+          betrag: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          },
+          konto: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          },
+          photo: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          }
+        }
+      }
+    }
+
+    window.customElements.define(OoAusgabeSatz.is, OoAusgabeSatz);
+  </script>
+</dom-module>
