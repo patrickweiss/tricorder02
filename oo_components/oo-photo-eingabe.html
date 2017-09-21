@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 
-<dom-module id="photo-eingabe">
+<dom-module id="oo-photo-eingabe">
   <template>
    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
 
@@ -24,8 +24,8 @@
   </template>
 
   <script>
-    class PhotoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'photo-eingabe' }
+    class OoPhotoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-photo-eingabe' }
       static get properties() {
         return {
 
@@ -49,6 +49,6 @@
     }
 
 
-    customElements.define(PhotoEingabe.is, PhotoEingabe);
+    customElements.define(OoPhotoEingabe.is, OoPhotoEingabe);
   </script>
 </dom-module>

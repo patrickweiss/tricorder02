@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 
-<dom-module id="konto-eingabe">
+<dom-module id="oo-konto-eingabe">
   <template>
    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
 
@@ -28,8 +28,8 @@
   </template>
 
   <script>
-    class KontoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'konto-eingabe' }
+    class OoKontoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-konto-eingabe' }
       static get properties() {
         return {
 
@@ -69,6 +69,6 @@
     }
 
 
-    customElements.define(KontoEingabe.is, KontoEingabe);
+    customElements.define(OoKontoEingabe.is, OoKontoEingabe);
   </script>
 </dom-module>

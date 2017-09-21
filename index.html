@@ -1,7 +1,5 @@
 <!--
-
-vielleicht später für statemanagement ergänzen?
-https://github.com/reactjs/redux/blob/master/examples/counter-vanilla/index.html
+Copyright by Schwarz auf Weiss AG, all rights reserved
 -->
 
 <!doctype html>
@@ -83,22 +81,21 @@ https://github.com/reactjs/redux/blob/master/examples/counter-vanilla/index.html
   <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
   <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
-  <!--Tricorder Bibliothek laden -->
+  <!--Load Tricorder library -->
 
   <script src="js/preRender.js"></script>
 
-  <!-- Load your application shell -->
-  <link rel="import" href="src/officeone-app.html">
+  <!-- Import application component -->
+  <link rel="import" href="pages/oo-app.html">
 
 </head>
 
 <body>
-  <officeone-app id="dieApp" dateneingabe="test"></officeone-app>
+  <oo-app id="dieApp" dateneingabe="test"></oo-app>
  
 
   <noscript>
-      Please enable JavaScript to view this website.
-      Erste Version in GIT gespeichert :-) 
+      Um diese Anwendung zu nutzen, bitte JavaScript im Browser aktivieren.
   </noscript>
   <!-- Built with love using Polymer Starter Kit -->
 </body>
