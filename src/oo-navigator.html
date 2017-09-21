@@ -1,0 +1,81 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="oo-navigator">
+  <template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+<p>oo-navigator.page:[[page]]</p>
+  <table>
+    <tbody>
+        <tr>
+          <td height="70px">
+            <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
+              
+              <div name="start">Die einfachste, schnellste und günstigste Gewinnermittlung (EÜR) und Umsatzsteuervoranmeldung (UStVA) für die Steuererklärung</div>
+              
+              <div name="navigator">
+                <a href="/start" id="start">Start</a> >> [[seitenname]]
+                <div id="buchungssatz"></div>
+              </div>
+              
+            </iron-pages>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+       
+
+  </template>
+
+  <script>
+    class OoNavigator extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-navigator' }
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+            notify:true
+          },
+           seitenname: {
+            type: String,
+            reflectToAttribute: true
+           }
+        }
+      }
+
+      constructor() {
+        super();
+        this.seitennamen={ausgabeErfassen:"Ausgabe erfassen",einnahmeErfassen:"Einnahme erfassen"};
+      }
+      
+      _pageChanged(page) {
+         var state = loadState();
+         /*
+            this.$.buchungsperiode.innerHTML=state["Buchungsperiode"];
+               try{
+          this.$.betrag.innerHTML=state["Ausgaben"]["neueAusgabe"]["Betrag"]+" €";
+          }catch(e){}
+          */
+         this.seitenname= this.seitennamen[this.page];
+        }
+        
+      buchungsperiodeLoeschen(){
+        console.log("Buchungsperiode löschen wurde aufgerufen");
+        var state = loadState();
+        state["Buchungsperiode"]=null;
+        storeState(state);
+        document.getElementById("dieApp").page="ausgabenErfassenBuchungsperiode";   
+      }
+      
+      betragAendern(){
+       // document.getElementById("dieApp").page="ausgabenErfassenBetrag";   
+       this.page="ausgabenErfassenBetrag";   
+      }
+    }
+
+
+    customElements.define(OoNavigator.is, OoNavigator);
+  </script>
+</dom-module>

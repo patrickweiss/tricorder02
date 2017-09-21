@@ -20,22 +20,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
+<!--
+</a><link rel="import" href="my-icons.html">
+-->
 
-<link rel="import" href="my-view1.html">
-<link rel="import" href="my-view2.html">
-<link rel="import" href="my-view3.html">
-<link rel="import" href="my-start.html">
-<link rel="import" href="oo-ausgaben-erfassen-buchungsperiode.html">
-<link rel="import" href="oo-ausgaben-erfassen-betrag.html">
-<link rel="import" href="oo-ausgaben-erfassen-konto.html">
-<link rel="import" href="my-view404.html">
+<link rel="import" href="oo-navigator.html">
+<link rel="import" href="oo-content.html">
+<link rel="import" href="../officeComponents/betrag-eingabe.html">
 
 <dom-module id="officeone-app">
   <template>
-   
+<p>officeone-app.path:[[path]]</p>
 
-    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
         pattern="[[rootPath]]:page"
@@ -43,20 +40,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}"></app-route>
 
       
+  <oo-navigator page={{page}}> 
   
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-
-          <my-start id="start" name="start"></my-start>
-          <oo-ausgaben-erfassen-buchungsperiode id="buchungsperiode" name="ausgabenErfassenBuchungsperiode"></oo-ausgaben-erfassen-buchungsperiode>
-          <oo-ausgaben-erfassen-betrag id="betrag" name="ausgabenErfassenBetrag"></oo-ausgaben-erfassen-betrag>
-          <oo-ausgaben-erfassen-konto id="konto" name="ausgabenErfassenKonto"></oo-ausgaben-erfassen-konto> 
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>
-     
+  </oo-navigator>
+  
+  <oo-content page={{page}}></oo-content>
+ 
   </template>
 
   <script>
@@ -69,6 +58,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: String,
             reflectToAttribute: true,
             observer: '_pageChanged',
+          },
+          dateneingabe: {
+            type: Object,
+            reflectToAttribute: true,
           },
           routeData: Object,
           subroute: String,

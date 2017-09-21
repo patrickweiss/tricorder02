@@ -6,17 +6,7 @@
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-  <table>
-    <tbody>
-      <tr>
-            <td id="officeTreePosition" height="70px"><a href="/start">Start</a> >> Ausgabe erfassen >>
-          <a href="ausgabenErfassenBuchungsperiode" on-click="buchungsperiodeLoeschen" id="buchungsperiode"></a>
-        </td>
-
-      </tr>
-
-    </tbody>
-  </table>
+ 
 
   <konto-eingabe id="konto"></konto-eingabe>
 
@@ -26,21 +16,7 @@
     class OoAusgabenErfassenKonto extends Polymer.Element {
       static get is() { return 'oo-ausgaben-erfassen-konto'; }
 
-      ready() {
-        
-        super.ready();
-        this.$.buchungsperiode.innerHTML = loadState()["Buchungsperiode"];
-        
-      }
-      
-      buchungsperiodeLoeschen(){
-        console.log("Buchungsperiode löschen wurde aufgerufen");
-        var state = loadState();
-        state["Buchungsperiode"]=null;
-        storeState(state);
-        window.location.href="ausgabenErfassenBuchungsperiode";
-      }
-      
+ 
       connectedCallback() {
         super.connectedCallback();
         window.addEventListener('kontoSpeichern', this.speichern);

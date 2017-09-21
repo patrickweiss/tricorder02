@@ -1,0 +1,36 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/src/shared-styles.html">
+<link rel="import" href="/officeComponents/buchungsperiode-eingabe.html">
+
+<dom-module id="oo-einnahmen-erfassen-buchungsperiode">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+
+  <buchungsperiode-eingabe id="buchungsperiode"></buchungsperiode-eingabe>
+
+  </template>
+
+  <script>
+    class OoEinnahmenErfassenBuchungsperiode extends Polymer.Element {
+      static get is() { return 'oo-einnahmen-erfassen-buchungsperiode'; }
+      
+      connectedCallback() {
+        super.connectedCallback();
+     //   window.addEventListener('buchungsperiodeSpeichern', this.speichern);
+      }
+
+/*
+      speichern(e) {
+        console.log("Buchungsperiode speichern wurde ausgeführt");
+        console.log(e.detail.month);
+        var state = loadState();
+        state["Buchungsperiode"]=e.detail.month;
+        storeState(state);
+        document.getElementById("dieApp").page="einnahmenErfassenBetrag";
+      }
+      */
+    }
+
+    window.customElements.define(OoEinnahmenErfassenBuchungsperiode.is, OoEinnahmenErfassenBuchungsperiode);
+  </script>
+</dom-module>

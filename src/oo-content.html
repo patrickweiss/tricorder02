@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="oo-start.html">
+<link rel="import" href="einnahmeErfassen/oo-einnahme-erfassen.html">
+<link rel="import" href="ausgabeErfassen/oo-ausgabe-erfassen.html">
+
+<link rel="import" href="my-view404.html">
+
+<dom-module id="oo-content">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+          <oo-start name="start"></oo-start> 
+          <oo-einnahme-erfassen name="einnahmeErfassen"></oo-einnahme-erfassen> 
+          <oo-ausgabe-erfassen name="ausgabeErfassen"></oo-ausgabe-erfassen> 
+          <my-view404 name="view404"></my-view404>
+        </iron-pages>
+  </template>
+
+  <script>
+    class OoContent extends Polymer.Element {
+      static get properties() {
+        return {
+         page: {
+            type: String,
+            reflectToAttribute: true,
+            notify:true
+          }
+        }
+      }
+      
+      static get is() { return 'oo-content'; }
+     
+    }
+
+
+    window.customElements.define(OoContent.is, OoContent);
+  </script>
+</dom-module>

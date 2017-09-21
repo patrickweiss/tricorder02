@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="oo-start">
+  <template>
+  <link rel="stylesheet" type="text/css" href="css/officeone.css">
+
+  <table>
+    <tbody>
+
+      <tr>
+        <td colspan=2>
+          <h1>Gewinn</h1>
+          <h3> = Einnahmen - Ausgaben
+            <h3>
+              <h1>UStVA</h1>
+              <h3>= erhaltene Umsatzsteuer - bezahlte Umsatzsteuer</h3>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <h1>Einnahmen</h1><a href="einnahmeErfassen/buchungsperiode">hier tippen, um die erste Einnahme zu erfassen</a></td>
+        <td>
+          <h1>Ausgaben</h1><a href="ausgabeErfassen/buchungsperiode">hier tippen, um die erste Ausgabe zu erfassen</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  </template>
+
+  <script>
+    class OoStart extends Polymer.Element {
+      static get properties() {
+        return {
+           dateneingabe: {
+            type: Object,
+            reflectToAttribute: true,
+          }
+        }
+      }
+      
+      static get is() { return 'oo-start'; }
+     
+    }
+
+
+    window.customElements.define(OoStart.is, OoStart);
+  </script>
+</dom-module>

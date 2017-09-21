@@ -17,14 +17,10 @@
       </tr>
 
       <tr>
-        <td on-tap="januar"><h3 id="0"></h3></td> <td on-tap="februar"><h3 id="1"></h3></td>
+        <td on-tap="kontoSetzen"><a href="[[naechsteseite]]"><div id="0"></div></a></td>
+        <td on-tap="kontoSetzen"><a href="[[naechsteseite]]"><div id="1"></div></a></td>
       </tr>
-      <tr>
-        <td on-tap="maerz"><h3 id="2"></h3></td> <td on-tap="april"><h3 id="3"></h3></td>
-      </tr>
-      <tr>
-        <td on-tap="mai"><h3></h3></td> <td on-tap="juni"><h3></h3></td>
-      </tr>
+     
     
     </tbody>
   </table>
@@ -37,11 +33,17 @@
       static get properties() {
         return {
 
-          konten: {
+          konto: {
             type: Object,
             notify: true,
             reflectToAttribute: true
+          },
+          naechsteseite: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
           }
+          
         }
       }
 
@@ -58,43 +60,12 @@
         this.$["0"].textContent = this.konten[0].ID;
         this.$["1"].textContent = this.konten[1].ID;
       }
+      
+      kontoSetzen(e) {
+        this.konto=e.target.textContent;
+      }
 
-      januar() {
-        this.dispatchEvent(new CustomEvent('kontoSpeichern',{detail: {month: "Januar"},bubbles: true, composed: true}));
-      }
-      februar() {
-        this.dispatchEvent(new CustomEvent('kontoSpeichern',{detail: {month: "Februar"},bubbles: true, composed: true}));
-      }
-      maerz() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "März"},bubbles: true, composed: true}));
-      }
-      april() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "April"},bubbles: true, composed: true}));
-      }
-      mai() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Mai"},bubbles: true, composed: true}));
-      }
-      juni() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Juni"},bubbles: true, composed: true}));
-      }
-      juli() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Juli"},bubbles: true, composed: true}));
-      }
-      august() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "August"},bubbles: true, composed: true}));
-      }
-      september() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "September"},bubbles: true, composed: true}));
-      }
-      oktober() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Oktober"},bubbles: true, composed: true}));
-      }
-      november() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "November"},bubbles: true, composed: true}));
-      }
-      dezember() {
-        this.dispatchEvent(new CustomEvent('speichern',{detail: {month: "Dezemeber"},bubbles: true, composed: true}));
-      }
+   
     }
 
 

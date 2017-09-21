@@ -17,22 +17,28 @@
       </tr>
 
       <tr>
-        <td on-tap="januar"><h3>Januar</h3></td> <td on-tap="februar"><h3>Februar</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Januar</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Februar</a></td>
       </tr>
       <tr>
-        <td on-tap="maerz"><h3>März</h3></td> <td on-tap="april"><h3>April</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">März</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">April</a></td>
       </tr>
       <tr>
-        <td on-tap="mai"><h3>Mai</h3></td> <td on-tap="juni"><h3>Juni</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Mai</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juni</a></td>
       </tr>
       <tr>
-        <td on-tap="juli"><h3>Juli</h3></td> <td on-tap="august"><h3>August</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juli</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">August</a></td>
       </tr>
       <tr>
-        <td on-tap="september"><h3>September</h3></td> <td on-tap="oktober"><h3>Oktober</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">September</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Oktober</a></td>
       </tr>
       <tr>
-        <td on-tap="november"><h3>November</h3></td> <td on-tap="dezember"><h3>Dezember</h3></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">November</a></td>
+        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Dezember</a></td>
       </tr>
     </tbody>
   </table>
@@ -44,12 +50,17 @@
       static get is() { return 'buchungsperiode-eingabe' }
       static get properties() {
         return {
-
           monat: {
             type: String,
             notify: true,
             reflectToAttribute: true
+          },
+          naechsteseite: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
           }
+
         }
       }
 
@@ -58,42 +69,10 @@
         this.monat = "";
       }
 
-      januar() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Januar"},bubbles: true, composed: true}));
+      monatSetzen(e) {
+        this.monat=e.target.textContent;
       }
-      februar() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Februar"},bubbles: true, composed: true}));
-      }
-      maerz() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "März"},bubbles: true, composed: true}));
-      }
-      april() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "April"},bubbles: true, composed: true}));
-      }
-      mai() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Mai"},bubbles: true, composed: true}));
-      }
-      juni() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Juni"},bubbles: true, composed: true}));
-      }
-      juli() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Juli"},bubbles: true, composed: true}));
-      }
-      august() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "August"},bubbles: true, composed: true}));
-      }
-      september() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "September"},bubbles: true, composed: true}));
-      }
-      oktober() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Oktober"},bubbles: true, composed: true}));
-      }
-      november() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "November"},bubbles: true, composed: true}));
-      }
-      dezember() {
-        this.dispatchEvent(new CustomEvent('buchungsperiodeSpeichern',{detail: {month: "Dezemeber"},bubbles: true, composed: true}));
-      }
+
     }
 
 

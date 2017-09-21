@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="photo-eingabe">
+  <template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+
+  <table>
+    <tbody>
+      
+      <tr>
+        <td colspan=2>
+          <h1>Belegphoto hochladen</h1>
+          <h3>...
+            <h3>
+
+      </tr>
+
+
+    
+    </tbody>
+  </table>
+
+  </template>
+
+  <script>
+    class PhotoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'photo-eingabe' }
+      static get properties() {
+        return {
+
+          photo: {
+            type: Object,
+            notify: true,
+            reflectToAttribute: true
+          },
+          naechsteseite: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
+          }
+          
+        }
+      }
+
+      
+      
+
+    }
+
+
+    customElements.define(PhotoEingabe.is, PhotoEingabe);
+  </script>
+</dom-module>
