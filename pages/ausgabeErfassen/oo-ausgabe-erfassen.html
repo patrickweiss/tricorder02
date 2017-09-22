@@ -14,31 +14,33 @@
 <link rel="import" href="/pages/oo-view404.html">
 
 <dom-module id="oo-ausgabe-erfassen">
-  <template>
-       <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
+<template>
+    <link rel="stylesheet" type="text/css" href="/css/officeone.css">
+    
+    <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route
         route="{{route}}"
         pattern="[[rootPath]]ausgabeErfassen/:page"
         data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
-    
-    <link rel="stylesheet" type="text/css" href="css/officeone.css">
-  
-    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="{{betrag}}" konto="{{konto}}"></oo-ausgabe-satz>
-  
-      <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+        tail="{{subroute}}">
       
-        <oo-buchungsperiode-eingabe name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
-        <oo-betrag-eingabe name="betrag" betrag={{betrag}} naechsteseite="ausgabeErfassen/konto"></oo-betrag-eingabe>
-        <oo-konto-eingabe name="konto" konto={{konto}} naechsteseite="ausgabeErfassen/photo"></oo-konto-eingabe>
-        <oo-photo-eingabe name="photo" photo={{photo}} naechsteseite="ausgabeErfassen/upload"></oo-photo-eingabe>
- 
-        <oo-view404 name="view404"></oo-view404>
-      </iron-pages>
+    </app-route>
+    
   
+    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]"></oo-ausgabe-satz>
+  
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+    
+      <oo-buchungsperiode-eingabe name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
+      <oo-betrag-eingabe name="betrag" betrag={{betrag}} naechsteseite="ausgabeErfassen/konto"></oo-betrag-eingabe>
+      <oo-konto-eingabe name="konto" konto={{konto}} naechsteseite="ausgabeErfassen/photo"></oo-konto-eingabe>
+      <oo-photo-eingabe name="photo" photo={{photo}} naechsteseite="ausgabeErfassen/upload"></oo-photo-eingabe>
+    
+      <oo-view404 name="view404"></oo-view404>
+    </iron-pages>
+            
        
   </template>
-
 <script>
     class OoAusgabeErfassen extends Polymer.Element {
       static get is() { return 'oo-ausgabe-erfassen'; }
