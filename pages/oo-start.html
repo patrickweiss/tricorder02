@@ -4,33 +4,43 @@
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-  <table>
-    <tbody>
+  
+       <div class="content-wrap"> 
+             <div class="col2 panel">
+                <h1>Gewinn ermitteln</h1>
+                <p>zur Erstellung der EÜR oder einer Bilanz
+                <br>Gewinn = Einnahmen - Ausgaben einer Buchungsperiode</p>
+            </div>
+            <div class="col2 panel">
+                <h1>Mehrwertsteuer ermitteln</h1>
+                <p>zur Erstellung von montalicher UStVA und jährlicher Mehrwertsteuererklärung
+                Mehrwertsteuer = Umsatzsteuer - Vorsteuer
+                einer Buchungsperiode</p>  
+            </div>
+            <div class="col1 panel">
+                <h1>Belege archivieren</h1>
+                <p>Alle Einnahmen und Ausgaben, welche beim Finanzamt geltend gemacht werden, 
+                müssen durch einen Digital- oder Papierbeleg belegt werden.</p>  
+ 
+                <div class="col2 panel">
+                    <h3>Digital- oder Papierbeleg erfassen</h3>
+                    <p>hier klicken, um einen Digitalbeleg aus <br>GoogleDrive zu erfassen
+                    Einen <a href=oo-papierbeleg-erfassen.html>Papierbeleg per Smartphone Foto</a> zu erfassen</p>  
+                </div>
+                <div class="col2 panel">
+                    <h3>Digital- oder Papierbeleg erzeugen</h3>
+                    <p>hier klicken, um eine Bareinnahme zu erfassen Rechnung zu erstellen</p>  
+                </div>
+                
+                <p>Wenn Sie alle Belege fuer eine Buchungsperiode erzeugt, erfasst und archiviert haben, 
+                werden die Mehrwertsteuer und der Gewinn automatisch aus den Belegdaten berechnet.</p>
+                
+            </div>
+          </div>   
 
-      <tr>
-        <td colspan=2>
-          <h1>Gewinn</h1>
-          <h3> = Einnahmen - Ausgaben
-            <h3>
-              <h1>UStVA</h1>
-              <h3>= erhaltene Umsatzsteuer - bezahlte Umsatzsteuer</h3>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-
-  <table>
-    <tbody>
-      <tr>
-        <td>
-          <h1>Einnahmen</h1><a href="einnahmeErfassen/buchungsperiode">hier tippen, um die erste Einnahme zu erfassen</a></td>
-        <td>
-          <h1>Ausgaben</h1><a href="ausgabeErfassen/buchungsperiode">hier tippen, um die erste Ausgabe zu erfassen</a></td>
-      </tr>
-
-    </tbody>
-  </table>
+                
+     
+   
 
   </template>
 

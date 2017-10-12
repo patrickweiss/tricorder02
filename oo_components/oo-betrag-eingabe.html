@@ -1,56 +1,52 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-
+<!--Copyright by Schwarz auf Weiss AG-->
+<!--Import all Polymer Elements used in this page-->
+<link rel="import" href="/bower_components/polymer/polymer.html">
 
 <dom-module id="oo-betrag-eingabe">
-<template>
-   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
-<!--
-   <table>
-    <tbody>
-      <tr>
-        <td  height="70px"><h1><div id="Betrag">[[betrag]] €</div></h1>
-       
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
--->
- <table>
-    <tbody>
-      <tr>
-        <td on-tap="add1" id="eins" height="70px"><h1>1</h1></div></td>
-        <td on-tap="add2" height="70px"><h1>2</h1></div></td>
-        <td on-tap="add3" height="70px"><h1>3</h1></div></td>
-      </tr>
-     <tr>
-        <td on-tap="add4" height="70px"><h1>4</h1></div></td>
-        <td on-tap="add5" height="70px"><h1>5</h1></div></td>
-        <td on-tap="add6" height="70px"><h1>6</h1></div></td>
-      </tr>
-     <tr>
-        <td on-tap="add7" height="70px"><h1>7</h1></div></td>
-        <td on-tap="add8" height="70px"><h1>8</h1></div></td>
-        <td on-tap="add9" height="70px"><h1>9</h1></div></td>
-      </tr>
-     <tr>
-        <td on-tap="add0" height="70px"><h1>0</h1></div></td>
-        <td on-tap="addComma" height="70px"><h1>,</h1></div></td>
-        <td on-tap="deleteNumber" height="70px"><h1><</h1></div></td>
-      </tr>
-
-    </tbody>
-  </table>
-  
-   
-  <table>
-    <tbody>
-      <tr>
-        <td on-tap="speichern" height="70px"><a href="[[naechsteseite]]">weiter</a></td>
-      </tr>
-   </tbody>
-  </table>
-   
+  <template>
+    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+    <!-- Betrag wird schon in Echtzeit in oo-ausgabe-satz angezeigt, deshalb hier nicht unbedingt nötig...
+    <table>
+      <tbody>
+        <tr>
+          <td  height="70px"><h1><div id="Betrag">[[betrag]] €</div></h1>
+         
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    -->
+    <table>
+      <tbody>
+        <tr>
+          <td on-tap="updatebetrag" height="70px">1</td>
+          <td on-tap="updatebetrag" height="70px">2</td>
+          <td on-tap="updatebetrag" height="70px">3</td>
+        </tr>
+        <tr>
+          <td on-tap="updatebetrag" height="70px">4</td>
+          <td on-tap="updatebetrag" height="70px">5</td>
+          <td on-tap="updatebetrag" height="70px">6</td>
+        </tr>
+        <tr>
+          <td on-tap="updatebetrag" height="70px">7</td>
+          <td on-tap="updatebetrag" height="70px">8</td>
+          <td on-tap="updatebetrag" height="70px">9</td>
+        </tr>
+        <tr>
+          <td on-tap="updatebetrag" height="70px">0</td>
+          <td on-tap="updatebetrag" height="70px">,</td>
+          <td on-tap="deleteNumber" height="70px"><</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr>
+          <td height="70px"><a href="[[naechsteseite]]">weiter</a></td>
+        </tr>
+      </tbody>
+    </table>
   </template>
 
   <script>
@@ -70,59 +66,19 @@
           }
         }
       }
-
-  
-
       constructor() {
         super();
         this.betrag = "";
       }
-
-      add1() {
-        this.betrag += "1";
-      }
-      add2() {
-        this.betrag += "2";
-      }
-      add3() {
-        this.betrag += "3";
-      }
-      add4() {
-        this.betrag += "4";
-      }
-      add5() {
-        this.betrag += "5";
-      }
-      add6() {
-        this.betrag += "6";
-      }
-      add7() {
-        this.betrag += "7";
-      }
-      add8() {
-        this.betrag += "8";
-      }
-      add9() {
-        this.betrag += "9";
-      }
-      add0() {
-        this.betrag += "0";
-      }
-      addComma() {
-        this.betrag += ",";
+      updatebetrag(e) {
+        var taste = e.target.textContent;
+        this.betrag += taste;
       }
       deleteNumber() {
         this.betrag = this.betrag.slice(0, -1);
         //  document.getElementById("Betrag").innerHTML = betrag + " €";
       }
-
-
-      speichern(e) {
-        this.dispatchEvent(new CustomEvent('betragSpeichern',{detail: {betrag: this.betrag},bubbles: true, composed: true}));
-      }
     }
-
-
     customElements.define(OoBetragEingabe.is, OoBetragEingabe);
   </script>
 </dom-module>

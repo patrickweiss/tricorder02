@@ -1,48 +1,45 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-
+<!--Copyright by Schwarz auf Weiss AG-->
+<!--Import all Polymer Elements used in this page-->
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/polymer.html">
 
 <dom-module id="oo-buchungsperiode-eingabe">
   <template>
-   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
-
-  <table>
-    <tbody>
-      
-      <tr>
-        <td colspan=2>
-          <h1>Buchungsperiode</h1>
-          <h3>Wählen Sie den Monat, für den Sie neue Ausgaben erfassen möchten
-            <h3>
-
-      </tr>
-
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Januar</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Februar</a></td>
-      </tr>
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">März</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">April</a></td>
-      </tr>
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Mai</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juni</a></td>
-      </tr>
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juli</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">August</a></td>
-      </tr>
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">September</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Oktober</a></td>
-      </tr>
-      <tr>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">November</a></td>
-        <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Dezember</a></td>
-      </tr>
-    </tbody>
-  </table>
-
+    <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+    <table>
+      <tbody>
+        <tr>
+          <td colspan=2>
+            <h1>Buchungsperiode</h1>
+            <h3>Wählen Sie den Monat, für den Sie neue Ausgaben erfassen möchten<h3>
+          </td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Januar</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Februar</a></td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">März</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">April</a></td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Mai</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juni</a></td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Juli</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">August</a></td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">September</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Oktober</a></td>
+        </tr>
+        <tr>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">November</a></td>
+          <td on-tap="monatSetzen"><a href="[[naechsteseite]]">Dezember</a></td>
+        </tr>
+      </tbody>
+    </table> 
   </template>
 
   <script>
@@ -60,22 +57,16 @@
             notify: true,
             reflectToAttribute: true
           }
-
         }
       }
-
       constructor() {
         super();
         this.monat = "";
       }
-
       monatSetzen(e) {
         this.monat=e.target.textContent;
       }
-
     }
-
-
     customElements.define(OoBuchungsperiodeEingabe.is, OoBuchungsperiodeEingabe);
   </script>
 </dom-module>
