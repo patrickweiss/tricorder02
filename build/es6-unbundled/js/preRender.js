@@ -1,0 +1,1 @@
+function loadState(){var a=localStorage.getItem("triStateJSON"),b={};return null==a?(b.Gewinn="Yipi- Gewinn",b.Ausgaben={},a=JSON.stringify(b),localStorage.setItem("triStateJSON",a)):b=JSON.parse(a),b}function storeState(a){triStateJSON=JSON.stringify(a),localStorage.setItem("triStateJSON",triStateJSON)}

@@ -5,8 +5,11 @@
    
   ],
   "sources": [
-    "pages/**/*",
+    "css/**/*",
     "images/**/*",
+    "js/**/*",
+    "oo_components/**/*",
+    "pages/**/*",
     "bower.json"
   ],
   "extraDependencies": [

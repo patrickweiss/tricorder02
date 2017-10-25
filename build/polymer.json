@@ -3,8 +3,11 @@
   "shell": "pages/oo-app.html",
   "fragments": [],
   "sources": [
-    "pages/**/*",
+    "css/**/*",
     "images/**/*",
+    "js/**/*",
+    "oo_components/**/*",
+    "pages/**/*",
     "bower.json",
     "index.html",
     "pages/oo-app.html"
