@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="oo-konto-taste">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `oo-konto-taste`
+     * element um ein konto einzugeben
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class OoKontoTaste extends Polymer.Element {
+      static get is() { return 'oo-konto-taste'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'oo-konto-taste'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(OoKontoTaste.is, OoKontoTaste);
+  </script>
+</dom-module>

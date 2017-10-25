@@ -1,10 +1,10 @@
 <!--Copyright by Schwarz auf Weiss AG-->
 <!--Import all Polymer Elements used in this page-->
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selector.html">
 <!--Import all office one (oo) pages used in this page-->
 <link rel="import" href="oo-navigator.html">
 <link rel="import" href="oo-content.html">
@@ -13,7 +13,7 @@
   <template>
       <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-    <p>officeone-app.path:[[path]]</p>
+    <!--  <p>officeone-app.path:[[path]]</p> -->
     <!--When the URL changes then the values of "route" and "page" will be updated-->
     <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>

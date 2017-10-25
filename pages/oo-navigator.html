@@ -1,12 +1,16 @@
 <!--Copyright by Schwarz auf Weiss AG-->
 <!--Import all Polymer Elements used in this page-->
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/polymer/polymer.html">
 
 <dom-module id="oo-navigator">
   <template>
     <link rel="stylesheet" type="text/css" href="/css/officeone.css">
-    <paper-icon-button icon="menu"></paper-icon-button>
+    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
+      <div name="start"><h1>EÜR und UStVA erstellen</h1></div>
+      <div name="navigator" class="panel">
+        <a href="/start" id="start">Start</a> >> [[seitenname]]
+      </div>
+    </iron-pages>
   </template>
   <script>
     class OoNavigator extends Polymer.GestureEventListeners(Polymer.Element) {
@@ -19,15 +23,18 @@
             observer: '_pageChanged',
             notify:true
           },
-         
+           seitenname: {
+            type: String,
+            reflectToAttribute: true
+           }
         }
       }
       constructor() {
         super();
-   
+        this.seitennamen={ausgabeErfassen:"Ausgabe erfassen",einnahmeErfassen:"Einnahme erfassen"};
       }
       _pageChanged(page) {
-        // this.seitenname= this.seitennamen[this.page];
+         this.seitenname= this.seitennamen[this.page];
       }
     }
     customElements.define(OoNavigator.is, OoNavigator);

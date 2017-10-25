@@ -1,5 +1,5 @@
 <!--Copyright by Schwarz auf Weiss AG-->
-<!--Import all Polymer Elements used in this page--><link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!--Import all Polymer Elements used in this page-->
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/bower_components/app-route/app-location.html">
 <link rel="import" href="/bower_components/app-route/app-route.html">
@@ -22,9 +22,11 @@
 
     <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]"></oo-ausgabe-satz>
   
-    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
+    <iron-pages class="panel" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" >
       <oo-buchungsperiode-eingabe name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
+      
       <oo-betrag-eingabe          name="betrag"          betrag={{betrag}}         naechsteseite="ausgabeErfassen/konto"></oo-betrag-eingabe>
+      
       <oo-konto-eingabe           name="konto"           konto={{konto}}           naechsteseite="ausgabeErfassen/photo"></oo-konto-eingabe>
       <oo-photo-eingabe           name="photo"           photo={{photo}}           naechsteseite="ausgabeErfassen/upload"></oo-photo-eingabe>
       <oo-view404 name="view404"></oo-view404>
