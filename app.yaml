@@ -28,16 +28,16 @@ handlers:
   secure: always
 
 - url: /manifest.json
-  static_files: build/es6-bundled/manifest.json
-  upload: build/es5-bundled/manifest.json
+  static_files: build/es6-unbundled/manifest.json
+  upload: build/es6-unbundled/manifest.json
   secure: always
 
 - url: /service-worker.js
-  static_files: build/es6-bundled/service-worker.js
-  upload: build/es6-bundled/service-worker.js
+  static_files: build/es6-unbundled/service-worker.js
+  upload: build/es6-unbundled/service-worker.js
   secure: always
 
 - url: /.*
-  static_files: build/es6-bundled/index.html
-  upload: build/es6-bundled/index.html
+  static_files: build/es6-unbundled/index.html
+  upload: build/es6-unbundled/index.html
   secure: always

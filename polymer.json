@@ -13,6 +13,7 @@
     "bower.json"
   ],
   "extraDependencies": [
+    "index.html",
     "manifest.json",
     "bower_components/webcomponentsjs/*.js"
   ],
