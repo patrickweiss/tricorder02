@@ -15,7 +15,12 @@
   "extraDependencies": [
     "index.html",
     "manifest.json",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*.js",
+    "pages/oo-app.html",
+    "pages/oo-content.html",
+    "pages/oo-navigator.html",
+    "pages/oo-start.html",
+    "pages/oo-view404.html"
   ],
   "lint": {
     "rules": ["polymer-2"]
