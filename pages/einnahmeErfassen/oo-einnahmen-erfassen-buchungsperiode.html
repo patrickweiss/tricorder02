@@ -5,7 +5,7 @@
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
 
-  <oo-buchungsperiode-eingabe id="buchungsperiode"></oo-buchungsperiode-eingabe>
+  <oo-buchungsperiode-eingabe id="buchungsperiode" on-buchungsperiodeSpeichern="speichern"></oo-buchungsperiode-eingabe>
 
   </template>
 
@@ -18,7 +18,7 @@
      //   window.addEventListener('buchungsperiodeSpeichern', this.speichern);
       }
 
-/*
+
       speichern(e) {
         console.log("Buchungsperiode speichern wurde ausgeführt");
         console.log(e.detail.month);
@@ -27,7 +27,7 @@
         storeState(state);
         document.getElementById("dieApp").page="einnahmenErfassenBetrag";
       }
-      */
+
     }
 
     window.customElements.define(OoEinnahmenErfassenBuchungsperiode.is, OoEinnahmenErfassenBuchungsperiode);

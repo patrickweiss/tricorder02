@@ -76,6 +76,7 @@
       }
       monatSetzen(e) {
         this.monat=e.target.textContent;
+        this.dispatchEvent(new CustomEvent('buchungsperiode-speichern', {detail: {monat: this.monat}}));
       }
     }
     customElements.define(OoBuchungsperiodeEingabe.is, OoBuchungsperiodeEingabe);
