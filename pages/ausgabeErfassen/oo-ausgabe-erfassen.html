@@ -24,7 +24,7 @@
     
     <app-localstorage-document key="buchungsperiode" data="{{buchungsperiode}}"></app-localstorage-document>
 
-    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]"></oo-ausgabe-satz>
+    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]" belegurl="[[belegurl]]"></oo-ausgabe-satz>
   
     <iron-pages class="panel" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" >
       <oo-buchungsperiode-eingabe on-buchungsperiode-speichern="speichern" name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
@@ -32,11 +32,12 @@
       <oo-betrag-eingabe          name="betrag"          betrag={{betrag}}         naechsteseite="ausgabeErfassen/konto"></oo-betrag-eingabe>
       
       <oo-konto-eingabe           name="konto"           konto={{konto}}           naechsteseite="ausgabeErfassen/photo"></oo-konto-eingabe>
-      <oo-photo-eingabe           name="photo"           photo={{photo}}           naechsteseite="ausgabeErfassen/upload"></oo-photo-eingabe>
+      <oo-photo-eingabe id="photo"name="photo"           belegurl={{belegurl}}           naechsteseite="ausgabeErfassen/upload" ></oo-photo-eingabe>
       <oo-view404 name="view404"></oo-view404>
     </iron-pages>
   </template>
 <script>
+/*global Polymer */
     class OoAusgabeErfassen extends Polymer.Element {
       static get is() { return 'oo-ausgabe-erfassen'; }
       static get properties() {

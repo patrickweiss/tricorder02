@@ -7,7 +7,7 @@
       <a href="ausgabeErfassen/buchungsperiode">[[buchungsperiode]]</a> * 
       <a href="ausgabeErfassen/betrag">[[betrag]]</a> * 
       <a href="ausgabeErfassen/konto">[[konto]]</a> * 
-      <a href="ausgabeErfassen/photo">[[photo]]</a>
+      <a href="ausgabeErfassen/photo"><img id="beleg" src="[[belegurl]]" alt="Belegfoto" href="ausgabeErfassen/photo" width="20" heigth="15"/></a>
     </div>
   </template>
 
@@ -17,26 +17,37 @@
       static get properties() {
         return {
           buchungsperiode: {
+            value:"Buchungsperiode",
             type: String,
             reflectToAttribute: true,
-            notify:true
+            notify:true,
+            observer: '_ausgabeChanged'
           },
           betrag: {
+            value:"Betrag",
             type: String,
             reflectToAttribute: true,
-            notify:true
+            notify:true,
+            observer: '_ausgabeChanged'
           },
           konto: {
+            value:"Konto",
             type: String,
             reflectToAttribute: true,
-            notify:true
+            notify:true,
+            observer: '_ausgabeChanged'
           },
           photo: {
+            value:"Belegfoto",
             type: String,
             reflectToAttribute: true,
-            notify:true
+            notify:true,
+            observer: '_ausgabeChanged'
           }
         }
+      }
+      _ausgabeChanged(){
+        console.log(this.buchungsperiode+this.betrag+this.konto+this.belegurl);
       }
     }
 
