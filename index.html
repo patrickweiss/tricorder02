@@ -53,5 +53,11 @@
       <oo-app id="dieApp"></oo-app>
    
   </body>
+  
+  <!-- Load API to connect to Google Apps of the user -->
+  <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+ </script>
 
 </html>

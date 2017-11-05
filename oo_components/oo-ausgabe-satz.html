@@ -7,11 +7,15 @@
       <a href="ausgabeErfassen/buchungsperiode">[[buchungsperiode]]</a> * 
       <a href="ausgabeErfassen/betrag">[[betrag]]</a> * 
       <a href="ausgabeErfassen/konto">[[konto]]</a> * 
-      <a href="ausgabeErfassen/photo"><img id="beleg" src="[[belegurl]]" alt="Belegfoto" href="ausgabeErfassen/photo" width="20" heigth="15"/></a>
+      <a href="ausgabeErfassen/photo"><img id="beleg" src="{{belegurl}}" alt="Belegfoto" href="ausgabeErfassen/photo" width="20" heigth="15"/></a> *
+      <a href="ausgabeErfassen/betrag" id="speichern" on-click="speichern" style="visibility:hidden;">Speichern</a>
     </div>
   </template>
 
   <script>
+  /*global OOBusinessObjects */
+  /*global Polymer*/
+  /*global gapi*/
     class OoAusgabeSatz extends Polymer.Element {
       static get is() { return 'oo-ausgabe-satz'; }
       static get properties() {
@@ -37,17 +41,69 @@
             notify:true,
             observer: '_ausgabeChanged'
           },
-          photo: {
+          belegurl: {
             value:"Belegfoto",
             type: String,
             reflectToAttribute: true,
             notify:true,
             observer: '_ausgabeChanged'
           }
-        }
+        };
       }
       _ausgabeChanged(){
-        console.log(this.buchungsperiode+this.betrag+this.konto+this.belegurl);
+        console.log(this.buchungsperiode+this.betrag+this.konto);
+        if (this.buchungsperiode!=="Buchungsperiode" && this.betrag!=="" && this.konto!=="Konto" && this.belegurl!=="Belegfoto"){
+          this.$.speichern.style.visibility="visible";
+          console.log("Buchungssatz vollstaendig");
+        }
+      }
+      speichern(){
+        OOBusinessObjects.addAusgabe(this.buchungsperiode,this.betrag,this.konto,this.belegurl);
+        //this.listFiles();
+        
+        var metadata = {
+          name:this.buchungsperiode+"_"+this.betrag+"-"+this.konto+".png",
+          konto:this.konto,
+          betrag:this.betrag
+        };
+        
+        OOBusinessObjects.saveFile(metadata,"noch nix","0B4-x7EyIw4PlY01YUXp5dXNHWWc");
+        this.belegurl="Belegfoto";
+
+      }
+      
+      listFiles() {
+        gapi.client.drive.files.list({
+          'pageSize': 10,
+          'fields': "nextPageToken, files(id, name)"
+        }).then(function(response) {
+         
+          var files = response.result.files;
+          if (files && files.length > 0) {
+            for (var i = 0; i < files.length; i++) {
+              var file = files[i];
+              console.log(file.name + ' (' + file.id + ')');
+            }
+          } else {
+            console.log('No files found.');
+          }
+        });
+      }
+      
+      belegInGoogleDriveSpeichern(name,daten){
+        console.log("Beleg in GoogleDrive speichern");
+        var fileMetadata = {
+          "name": this.buchungsperiode+"_"+this.betrag+"-"+this.konto+".png"
+        };
+      
+        gapi.client.drive.files.create({
+          resource: fileMetadata,
+          fields: 'id'
+        }).then(function(response) {
+            console.log(response);
+          }
+        );
+        
       }
     }
 

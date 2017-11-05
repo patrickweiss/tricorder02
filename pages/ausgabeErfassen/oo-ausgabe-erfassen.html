@@ -24,7 +24,7 @@
     
     <app-localstorage-document key="buchungsperiode" data="{{buchungsperiode}}"></app-localstorage-document>
 
-    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]" belegurl="[[belegurl]]"></oo-ausgabe-satz>
+    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]" belegurl="{{belegurl}}"></oo-ausgabe-satz>
   
     <iron-pages class="panel" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" >
       <oo-buchungsperiode-eingabe on-buchungsperiode-speichern="speichern" name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
