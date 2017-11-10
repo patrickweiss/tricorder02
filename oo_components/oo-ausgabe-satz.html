@@ -55,7 +55,7 @@
         if (this.buchungsperiode!=="Buchungsperiode" && this.betrag!=="" && this.konto!=="Konto" && this.belegurl!=="Belegfoto"){
           this.$.speichern.style.visibility="visible";
           console.log("Buchungssatz vollstaendig");
-        }
+        }else this.$.speichern.style.visibility="hidden";
       }
       speichern(){
         OOBusinessObjects.addAusgabe(this.buchungsperiode,this.betrag,this.konto,this.belegurl);
@@ -69,42 +69,9 @@
         
         OOBusinessObjects.saveFile(metadata,"noch nix","0B4-x7EyIw4PlY01YUXp5dXNHWWc");
         this.belegurl="Belegfoto";
-
       }
       
-      listFiles() {
-        gapi.client.drive.files.list({
-          'pageSize': 10,
-          'fields': "nextPageToken, files(id, name)"
-        }).then(function(response) {
-         
-          var files = response.result.files;
-          if (files && files.length > 0) {
-            for (var i = 0; i < files.length; i++) {
-              var file = files[i];
-              console.log(file.name + ' (' + file.id + ')');
-            }
-          } else {
-            console.log('No files found.');
-          }
-        });
-      }
-      
-      belegInGoogleDriveSpeichern(name,daten){
-        console.log("Beleg in GoogleDrive speichern");
-        var fileMetadata = {
-          "name": this.buchungsperiode+"_"+this.betrag+"-"+this.konto+".png"
-        };
-      
-        gapi.client.drive.files.create({
-          resource: fileMetadata,
-          fields: 'id'
-        }).then(function(response) {
-            console.log(response);
-          }
-        );
-        
-      }
+     
     }
 
     window.customElements.define(OoAusgabeSatz.is, OoAusgabeSatz);

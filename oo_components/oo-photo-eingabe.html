@@ -10,9 +10,9 @@
   </template>
 
   <script>
-  /*global Polymer*/
+  /*global Polymer,globaleBelegDatei*/
     class OoPhotoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'oo-photo-eingabe' }
+      static get is() { return 'oo-photo-eingabe'; }
       static get properties() {
         return {
 
@@ -27,16 +27,17 @@
             reflectToAttribute: true
           }
           
-        }
+        };
       }
       
       zeigeBeleg(){
         var belegbild = this.$.beleg;
         this.belegurl = "test";
         var that=this;
-        var belegurlpropery = this.belegurl;
-        console.log("zeigeBeleg");
+         console.log("zeigeBeleg");
         if (this.$.belegdatei.files && this.$.belegdatei.files[0]){
+          //Global in preRender definiert. hierfür muss ich noch eine bessere Lösung finden
+          globaleBelegDatei=this.$.belegdatei.files[0];
           var reader = new FileReader();
           
           reader.onload = function (e){ 
