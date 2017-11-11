@@ -5,10 +5,12 @@
 <dom-module id="oo-navigator">
   <template>
     <link rel="stylesheet" type="text/css" href="/css/officeone.css">
+    <app-localstorage-document key="buchungsperiode" data="{{buchungsperiode}}"></app-localstorage-document>
+
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="navigator" role="main">
       <div name="start"><h1>EÜR und UStVA erstellen</h1></div>
       <div name="navigator" class="panel">
-        <a href="/start" id="start">Start</a> >> [[seitenname]]
+        <a href="/start" id="start">Start</a> >> [[seitenname]] >> <a href="ausgabeErfassen/buchungsperiode">[[buchungsperiode]]</a>
       </div>
     </iron-pages>
   </template>

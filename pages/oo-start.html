@@ -1,12 +1,10 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 
+
 <dom-module id="oo-start">
   <template>
   <link rel="stylesheet" type="text/css" href="css/officeone.css">
-  
- 
-    
-        <h2>Belege erfassen, archivieren, fertig!</h2>
+       <h2>Belege erfassen, archivieren, fertig!</h2>
         <p>Alle Einnahmen und Ausgaben, welche beim Finanzamt geltend gemacht werden, 
         müssen durch einen Digital- oder Papierbeleg belegt werden. Wenn Sie alle Belege für eine Buchungsperiode erfasst haben, 
         werden die Mehrwertsteuer und der Gewinn automatisch aus den Belegdaten berechnet.</p>
@@ -14,10 +12,10 @@
  
         <div class="eine-zeile">
             <div class="spalten panel">
-                <h2>Digital- oder Papierbeleg erfassen</h2>
+                <h2>Digital- oder Papierbeleg erfassen [[buchungsperiode]], [[beginn]]</h2>
                 <p style="font-style: italic">Mit dieser App erfassen sie einfach und schnell Belege mit Ihrem Smartphone</p> 
                 <ul>
-                    <li><a href="ausgabeErfassen/buchungsperiode">Papierbeleg per Smartphone erfassen und per Foto archivieren</a> </li> 
+                    <li><a href="ausgabeErfassen/[[beginn]]">Papierbeleg per Smartphone erfassen und per Foto archivieren</a> </li> 
                     <li>Beleg aus Google Drive erfassen</li>
                 </ul>
             </div>
@@ -54,22 +52,33 @@
   
   </template>
 
-  <script>
-    class OoStart extends Polymer.Element {
-      static get properties() {
-        return {
-           dateneingabe: {
-            type: Object,
-            reflectToAttribute: true,
-          }
+    <script>
+        class OoStart extends Polymer.Element {
+            static get properties() {
+                return {
+                    buchungsperiode: {
+                        type: String,
+                        observer: '_buchungsperiodeChanged',
+                    },
+                    beginn: {
+                        value: "buchungsperiode",
+                        type: String,
+                        notify:true
+                    }
+                }
+            }
+    
+           _buchungsperiodeChanged() {
+                   console.log("_buchungsperiodeChanged" + this.buchungsperiode);
+                   if (this.buchungsperiode === null)
+                       this.beginn = "buchungsperiode";
+                   else
+                       this.beginn = "betrag";
+           }
+    
+            static get is() { return 'oo-start'; }
+    
         }
-      }
-      
-      static get is() { return 'oo-start'; }
-     
-    }
-
-
-    window.customElements.define(OoStart.is, OoStart);
-  </script>
+        window.customElements.define(OoStart.is, OoStart);
+    </script>
 </dom-module>

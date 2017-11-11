@@ -40,7 +40,10 @@
             type: Object,
             reflectToAttribute: true,
           },
-          routeData: Object,
+          routeData: {
+            type:Object,
+            reflectToAttribute: true
+          },
           subroute: String,
           // This shouldn't be neccessary, but the Analyzer isn't picking up
           // Polymer.Element#rootPath
@@ -56,6 +59,7 @@
       _routePageChanged(page) {
        this.page = page || 'start';
        console.log("Seitenwechsel: "+this.page);
+       mobilelog("Seitenwechsel: "+this.page);
       }
 
       _pageChanged(page) {

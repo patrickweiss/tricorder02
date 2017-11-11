@@ -5,8 +5,11 @@
 <link rel="import" href="/bower_components/app-route/app-route.html">
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="/bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="/bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
 <!--Import all office one (oo) components used in this page-->
 <link rel="import" href="/oo_components/oo-ausgabe-satz.html">
+<link rel="import" href="/oo_components/oo-dateiliste.html">
 <link rel="import" href="/oo_components/oo-buchungsperiode-eingabe.html">
 <link rel="import" href="/oo_components/oo-betrag-eingabe.html">
 <link rel="import" href="/oo_components/oo-konto-eingabe.html">
@@ -19,20 +22,23 @@
     <link rel="stylesheet" type="text/css" href="/css/officeone.css">
     <app-location route="{{route}}" path="{{path}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]ausgabeErfassen/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
-    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]"></oo-ausgabe-satz>
+    
+    <app-localstorage-document key="buchungsperiode" data="{{buchungsperiode}}"></app-localstorage-document>
+    <oo-dateiliste buchungsperiode="[[buchungsperiode]]"></oo-dateiliste>
+    <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]" belegurl="{{belegurl}}"></oo-ausgabe-satz>
   
     <iron-pages class="panel" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" >
-      <oo-buchungsperiode-eingabe name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
+      <oo-buchungsperiode-eingabe on-buchungsperiode-speichern="speichern" name="buchungsperiode" monat={{buchungsperiode}} naechsteseite="ausgabeErfassen/betrag"></oo-buchungsperiode-eingabe>
       
       <oo-betrag-eingabe          name="betrag"          betrag={{betrag}}         naechsteseite="ausgabeErfassen/konto"></oo-betrag-eingabe>
       
       <oo-konto-eingabe           name="konto"           konto={{konto}}           naechsteseite="ausgabeErfassen/photo"></oo-konto-eingabe>
-      <oo-photo-eingabe           name="photo"           photo={{photo}}           naechsteseite="ausgabeErfassen/upload"></oo-photo-eingabe>
+      <oo-photo-eingabe id="photo"name="photo"           belegurl={{belegurl}}           naechsteseite="ausgabeErfassen/upload" ></oo-photo-eingabe>
       <oo-view404 name="view404"></oo-view404>
     </iron-pages>
   </template>
 <script>
+/*global Polymer */
     class OoAusgabeErfassen extends Polymer.Element {
       static get is() { return 'oo-ausgabe-erfassen'; }
       static get properties() {
@@ -57,7 +63,18 @@
         this.page = page;
         console.log("oo-ausgabe-erfassen._routePageChanged: " + this.page);
       }
+      speichern(e) {
+        console.log("Buchungsperiode speichern wurde ausgeführt");
+        console.log(e.detail.monat);
+        /*
+        var state = loadState();
+        state["Buchungsperiode"]=e.detail.monat;
+        storeState(state);
+       */
+      }
     }
+    
+   
     window.customElements.define(OoAusgabeErfassen.is, OoAusgabeErfassen);
   </script>
 </dom-module>

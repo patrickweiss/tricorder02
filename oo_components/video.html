@@ -1,0 +1,71 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="oo-photo-eingabe">
+  <template>
+   <link rel="stylesheet" type="text/css" href="../css/officeone.css">
+   <h1>Belegfoto</h1>
+    <video id="video" width="400" height="400" controls>Video stream not available.</video>
+    <input type="file" accept="image/*" capture="environment">
+
+  </template>
+
+  <script>
+    class OoPhotoEingabe extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'oo-photo-eingabe' }
+      static get properties() {
+        return {
+
+          photo: {
+            type: Object,
+            notify: true,
+            reflectToAttribute: true
+          },
+          naechsteseite: {
+            type: String,
+            notify: true,
+            reflectToAttribute: true
+          }
+          
+        }
+      }
+      
+      /*
+      videoStarten(){
+        console.log("Video wird gestartet");
+        var video = this.$.video;
+        navigator.getMedia = (  navigator.getUserMedia ||
+                                navigator.webkitGetUserMedia ||
+                                navigator.mozGetUserMedia ||
+                                navigator.msGetUserMedia);
+        navigator.getMedia(
+          {
+            video: { facingMode: "environment", width: 160 ,height: 240 } ,
+            audio: false
+          },
+          function(stream) {
+           if (navigator.mozGetUserMedia) {
+             video.mozSrcObject = stream;
+           } else {
+            var vendorURL = window.URL || window.webkitURL;
+            video.src = vendorURL.createObjectURL(stream);
+           }
+           video.play();
+          },
+          function(err) {
+           console.log("An error occured! " + err);
+          }
+        );
+      }
+      */
+      videoStarten(){
+         var player = this.$.video;
+         var handleSuccess = function(stream) {player.srcObject = stream;player.play()};
+         navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: "environment", width: 160 ,height: 240 } }).then(handleSuccess)
+      }
+    }
+
+
+    customElements.define(OoPhotoEingabe.is, OoPhotoEingabe);
+  </script>
+</dom-module>
