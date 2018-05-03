@@ -33,7 +33,11 @@
       }
       constructor() {
         super();
-        this.seitennamen={ausgabeErfassen:"Ausgabe erfassen",einnahmeErfassen:"Einnahme erfassen"};
+        this.seitennamen={
+          ausgabeErfassen:"Ausgabe erfassen",
+          einnahmeErfassen:"Einnahme erfassen",
+          driveOrdnerAnlegen:"Google Drive Ordner anlegen"
+        };
       }
       _pageChanged(page) {
          this.seitenname= this.seitennamen[this.page];

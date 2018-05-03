@@ -24,7 +24,7 @@
     <app-route route="{{route}}" pattern="[[rootPath]]ausgabeErfassen/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     
     <app-localstorage-document key="buchungsperiode" data="{{buchungsperiode}}"></app-localstorage-document>
-    <oo-dateiliste buchungsperiode="[[buchungsperiode]]"></oo-dateiliste>
+    <oo-dateiliste folderid="[[folderid]]"></oo-dateiliste>
     <oo-ausgabe-satz buchungsperiode="[[buchungsperiode]]" betrag="[[betrag]]" konto="[[konto]]" belegurl="{{belegurl}}"></oo-ausgabe-satz>
   
     <iron-pages class="panel" selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" >

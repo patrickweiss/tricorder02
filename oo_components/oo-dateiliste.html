@@ -3,7 +3,7 @@
 <dom-module id="oo-dateiliste">
   <template>
     <link rel="stylesheet" type="text/css" href="/css/officeone.css">
-    <div class="panel">    Dateiliste
+    <div class="panel" id="panel">    Dateiliste
 
     <div id="belegliste">
      
@@ -24,19 +24,21 @@
       static get is() { return 'oo-dateiliste'; }
       static get properties() {
         return {
-            buchungsperiode: {
+            folderid: {
             value:"",
             type: String,
             reflectToAttribute: true,
             notify:true,
-            observer: '_buchungsperiodeChanged'
+            observer: '_folderidChanged'
           }
         };
       }
-      _buchungsperiodeChanged(){
-        if (this.buchungsperiode!=="")this.beleglisteAktualisieren();
+      _folderidChanged(){
+        if (this.folderid!=="")this.beleglisteAktualisieren();
+        else this.$.panel.style.display="none";
       }
       beleglisteAktualisieren(){
+        this.$.panel.style.display="block";
         var belegArray = OO.getAusgabenInMonat(this.buchungsperiode,"test");
         var htmlListe = this.makeUL(belegArray);
         this.$.belegliste.replaceChild(htmlListe,this.$.belegliste.childNodes[0])
